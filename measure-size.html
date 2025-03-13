@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measure Your Size</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Measure Your Size</h1>
+    <p>Please allow camera access to continue.</p>
+    <video id="video" autoplay></video>
+    
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            document.getElementById("video").srcObject = stream;
+        })
+        .catch(error => {
+            alert("Camera access denied. Please allow camera access to use this feature.");
+        });
+    </script>
+</body>
+</html>
